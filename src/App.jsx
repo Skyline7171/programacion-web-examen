@@ -260,7 +260,7 @@ function Carousel() {
   )
 }
 
-/* ---------- Resenas ---------- */
+/* ---------- Reseñas ---------- */
 
 function Stars({ value, onChange }) {
   return (
