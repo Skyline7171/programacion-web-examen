@@ -46,8 +46,15 @@ const courses = [
 ]
 
 const buildPlan = (termCount) => {
-  const size = Math.ceil(courses.length / termCount)
-  return Array.from({ length: termCount }, (_, i) => courses.slice(i * size, (i + 1) * size)).filter((t) => t.length)
+  const base = Math.floor(courses.length / termCount)
+  const extra = courses.length % termCount
+  let cursor = 0
+  return Array.from({ length: termCount }, (_, i) => {
+    const size = base + (i < extra ? 1 : 0)
+    const term = courses.slice(cursor, cursor + size)
+    cursor += size
+    return term
+  })
 }
 
 const orgChart = {
